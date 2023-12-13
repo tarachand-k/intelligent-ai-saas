@@ -57,11 +57,11 @@ export async function POST(req) {
     // Get the ID and type
     console.log("from user webhook", id, attributes);
 
-    // await prismadb.user.upsert({
-    //   where: { externalId: id },
-    //   create: { externalId: id, attributes },
-    //   update: { attributes },
-    // });
+    await prismadb.user.upsert({
+       where: { externalId: id },
+       create: { externalId: id, attributes },
+       update: { attributes },
+     });
   }
 
   console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
